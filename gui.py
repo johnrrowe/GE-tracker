@@ -34,6 +34,7 @@ class Application(Frame):
 
     # Create main GUI window
     def create_widgets(self):
+        self.windows = [self.master]
         self.search_var = StringVar()
         self.search_var.trace("w", lambda name, index, mode: self.update_list())
         self.entry = Entry(self, textvariable=self.search_var, width=35)
@@ -43,7 +44,7 @@ class Application(Frame):
         self.selectButton = Button(self, text='Select', underline = 0, command=self.selection)
 
         self.item_table.bind('<Double-1>', lambda x: self.selectButton.invoke())
-        self.master.bind('<Escape>', lambda x: self.master.destroy())
+        self.master.bind('<Escape>', lambda x: self.windows.pop().destroy())
 
         self.entry.grid(row=0, column=0, padx=10, pady=3)
         self.header.grid(row=1, column=0, padx=10, pady=3)
@@ -66,6 +67,8 @@ class Application(Frame):
 
     def cannonTest(self):
         print("Selected cannonball.")
+        window = Toplevel(self.master)
+        self.windows.append(window.master)
 
 
     def update_list(self):

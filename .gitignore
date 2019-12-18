@@ -1,0 +1,8 @@
+Items/
+GE_tracker.egg-info
+__pycache__
+create_table.py
+csv_to_table.py
+add_row.py
+ge.py
+check.py
