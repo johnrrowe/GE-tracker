@@ -33,12 +33,6 @@ class Application(tk.Frame):
         self.create_widgets()
 
 
-    def __del__(self):
-        # Close out database connection
-        self.cursor.close()
-        self.conn.close()
-        print("Connection closed.")
-
 
     # Create main GUI window
     def create_widgets(self):
@@ -67,15 +61,6 @@ class Application(tk.Frame):
 
 
 
-    def open_graph(self):
-        # Ignore the first 38 characters of the selection then grab the id
-        ITEM_SPACING = 38
-        ID = self.item_table.selection_get()[ITEM_SPACING:].split()[0]
-
-        plotter.create_window(self.master, self.cursor, "item"+ID)
-
-
-
     def update_list(self):
         search_term = self.search_term.get()
         # List of items to search from
@@ -88,6 +73,22 @@ class Application(tk.Frame):
                 self.item_table.insert(tk.END, item)
 
 
+    def open_graph(self):
+        # Ignore the first 38 characters of the selection then grab the id
+        ITEM_SPACING = 38
+        ID = self.item_table.selection_get()[ITEM_SPACING:].split()[0]
+
+        plotter.create_window(self.master, self.cursor, "item"+ID)
+
+
+
+    def end_connection(self):
+        # Close out database connection
+        self.cursor.close()
+        self.conn.close()
+        print("Connection closed.")
+
+
 
 
 
@@ -95,3 +96,4 @@ root = tk.Tk()
 root.title('Filter Listbox Test')
 app = Application(master=root)
 app.mainloop()
+app.end_connection()
