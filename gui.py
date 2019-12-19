@@ -93,7 +93,7 @@ class Application(tk.Frame):
 
 
 root = tk.Tk()
-root.title('Filter Listbox Test')
+root.title('GE Tracker 69420 v.01')
 app = Application(master=root)
 app.mainloop()
 app.end_connection()
