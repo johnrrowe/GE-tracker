@@ -46,7 +46,7 @@ def trim_prices(data):
     '''
     This function removes instances from price data where entries are 0.
     Prices are never really 0, and these instances occur when not enough items
-    are being bought and sold. This also means price data needs its own time vectors.
+    are being bought and sold. This also means price data need their own time vectors.
     '''
 
     buy_price  = [p for p in data['buy_price'] if p > 0]
