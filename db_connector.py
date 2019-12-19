@@ -11,10 +11,10 @@ config = {
 }
 
 def connect_to_db():
-    # Construct connection string
+    # Try to connect to database
     try:
        conn = mysql.connector.connect(**config, client_flags=[ClientFlag.LOCAL_FILES])
-       print("Connection established")
+       print("Connection established.")
     except mysql.connector.Error as err:
         if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
           print("Something is wrong with the user name or password")
