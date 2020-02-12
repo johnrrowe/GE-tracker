@@ -6,7 +6,7 @@ from mysql.connector.constants import ClientFlag
 config = {
   'host':'osrs.mysql.database.azure.com',
   'user':'jrrowe@osrs',
-  'password':'Bigrig92',
+  'password':
   'database':'items'
 }
 
